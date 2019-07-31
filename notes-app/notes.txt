@@ -1,0 +1,2 @@
+Hello it is Node JS!
+Writing a file
