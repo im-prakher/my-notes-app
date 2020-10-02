@@ -2,10 +2,15 @@ const fs=require('fs');
 const chalk = require('chalk')
 
 const getNotes=()=>{
+    try{
     return "Your notes are here..."
+    }catch(Exception e){
+       return [];
+   }
 }
 
 const addNote=(title,body)=>{
+    try{
     const notes=loadNotes();
     const duplicateNote =notes.find((note)=>
          note.title===title );
@@ -20,15 +25,22 @@ const addNote=(title,body)=>{
 }else{ss
     console.log(chalk`red.bold Note title taken!`);
 }
+    }catch(Exception e){
+       return [];
+   }
 }
 
 const readNote=(title)=>{
+    try{
     const notes=loadNotes();
     const found_note=notes.find(note=> note.title===title);
     if(found_note)
         console.log(chalk`{blue ${found_note.title} } \n{yellow ${found_note.body}}`)
     else
         console.log(chalk`{red Node not found}`);
+    }catch(Exception e){
+       return [];
+   }
 }
 
 const removeNote= function(title){
