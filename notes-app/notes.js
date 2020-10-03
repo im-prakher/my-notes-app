@@ -4,7 +4,7 @@ const chalk = require('chalk')
 const getNotes=()=>{
     try{
     return "Your notes are here..."
-    }catch(Exception e){
+    }catch(err){
        return [];
    }
 }
@@ -25,7 +25,7 @@ const addNote=(title,body)=>{
 }else{ss
     console.log(chalk`red.bold Note title taken!`);
 }
-    }catch(Exception e){
+    }catch(err){
        return [];
    }
 }
@@ -38,7 +38,7 @@ const readNote=(title)=>{
         console.log(chalk`{blue ${found_note.title} } \n{yellow ${found_note.body}}`)
     else
         console.log(chalk`{red Node not found}`);
-    }catch(Exception e){
+    }catch(err){
        return [];
    }
 }
