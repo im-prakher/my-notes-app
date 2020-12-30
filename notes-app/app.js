@@ -1,6 +1,9 @@
 const chalk = require('chalk')
 const yargs = require('yargs')
 const notes = require('./notes.js')
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
+var db = mongoose.connection;
 
 // Customize yargs version
 yargs.version('1.1.0')
