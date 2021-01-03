@@ -11,15 +11,24 @@ const getNotes=()=>{
 }
 
 const addNote=(title,body)=>{
-
-    var newNote = new Note({
-        title : title,
-        body : body
-    })
-    Note.createNote(newNote, (err, note) => {
+    Note.getNoteByTitle(title, (err, note) => {
         if(err) throw err;
-        console.log(note);
+        if(!note){
+            var newNote = new Note({
+                title : title,
+                body : body
+            })
+            Note.createNote(newNote, (err, note) => {
+                if(err) throw err;
+                console.log(note);
+            })
+            console.log(chalk`{green.bold New note added!}`);
+        }
+        else{
+            console.log(chalk`{red.bold Note title taken!}`);
+        }
     })
+
 };
 
 const readNote=(title)=>{
@@ -60,8 +69,6 @@ const listNotes=()=>{
             console.log(note.title);
         });
       })
-  
-    const notes=loadNotes();
 
 }
 
